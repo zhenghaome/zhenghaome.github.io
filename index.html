@@ -32,7 +32,8 @@
             function carousel()
             {
                 var i;
-                var x = document.getElementById("contents").getElementsByClassName("mySlides");
+                var contents = document.getElementById("contents");
+                var x = contents.getElementsByClassName("mySlides");
                 for (i = 0; i < x.length; i++) {
                    x[i].style.display = "none";  
                 }
