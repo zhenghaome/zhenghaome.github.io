@@ -11,7 +11,43 @@
 		<!-- Override CSS file - add your own CSS rules -->
 		<link rel="stylesheet" href="/css/styles.css">
         
+        <style>
+            .mySlides {display:none}
+            .w3-left, .w3-right, .w3-badge {cursor:pointer}
+            .w3-badge {height:13px;width:13px;padding:0}
+        </style>
+        
         <script src="/js/jquery.min.js"></script>
+        
+        <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+          showDivs(slideIndex = n);
+        }
+
+        function showDivs(n)
+        {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("demo");
+          if (n > x.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = x.length}
+          for (i = 0; i < x.length; i++) {
+             x[i].style.display = "none";  
+          }
+          for (i = 0; i < dots.length; i++) {
+             dots[i].className = dots[i].className.replace(" w3-white", "");
+          }
+          x[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " w3-white";
+        }
+        </script>
         
 	</head>
 	<body>
@@ -22,9 +58,31 @@
             $(".main").load("/mainbar.html");
         });
         </script>
+        
+        <script>
+            var myIndex = 0;
+            carousel();
+            function carousel()
+            {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                for (i = 0; i < x.length; i++) {
+                   x[i].style.display = "none";  
+                }
+                myIndex++;
+                if (myIndex > x.length) {myIndex = 1}    
+                x[myIndex-1].style.display = "block";
+                setTimeout(carousel, 5*1000);
+            }
+        </script>
+        
         </div>
         
         <div id="contents">
+
+          <img class="mySlides" src="/img/slide/img_la.jpg" style="width:100%">
+          <img class="mySlides" src="/img/slide/img_ny.jpg" style="width:100%">
+          <img class="mySlides" src="/img/slide/img_chicago.jpg" style="width:100%">
 
         </div>
         
